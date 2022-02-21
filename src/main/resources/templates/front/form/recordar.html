@@ -1,0 +1,36 @@
+<div class="modal fade auto-off" id="recordarModal" tabindex="-1" role="dialog" aria-labelledby="demoModal" aria-hidden="true">
+	<div class="modal-dialog animated zoomInDown modal-dialog-centered" role="document">
+		<div class="modal-content py-3">
+			<div class="container-fluid d-flex flex-column">
+				<div class="button close justify-content-end text-end" type="button" data-dismiss="modal" aria-label="Close">
+					<i class="fas fa-times-circle fa-lg"></i>
+				</div>
+				<div class="row pt-2 px-5 pb-5" id="recordarGroup">
+					<div class="col-md-12 text-center">
+						<h3 class="pb-2">Ets un desmemoriat?</h3>
+						<i class="far fa-meh-rolling-eyes"></i>
+						<p class="text-desmemoriat pt-3 mb-0"> 
+							<span>
+								<strong>No et preocupis! Nosaltres t'ho recordem. </strong>
+							</span>
+							<span>Digue'ns el teu email i et fem arribar un correu ;)</span>
+						</p>	
+						<form id="recordar" class="pb-4">
+							<!--/* errors */-->
+							<div class="input-group flex-nowrap pb-3">
+								<span class="input-group-text">
+									<i class="fas fa-envelope"></i>
+								</span>
+								<label class="d-none" for="email">Correu electrònic</label>
+					          	<input class="form-control" type="text" id="email" title="Correu electrònic" placeholder="Correu electrònic" aria-label="Correu electrònic" aria-describedby="addon-wrapping">
+							</div>
+							<button class="boto" type="submit" name="login-submit">
+								<span>Recordem-ho!</span>
+							</button>							
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

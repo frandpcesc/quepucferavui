@@ -1,0 +1,196 @@
+<div class="modal fade auto-off" id="dadesUsuariModal" tabindex="-1" role="dialog" aria-labelledby="demoModal" aria-hidden="true">
+	<div class="modal-dialog animated zoomInDown modal-dialog-centered" role="document">
+		<div class="modal-content py-3">
+			<div class="container-fluid d-flex flex-column">
+				<div class="button close justify-content-end text-end" type="button" data-dismiss="modal" aria-label="Close">
+					<i class="fas fa-times-circle fa-lg"></i>
+				</div>
+				<div class="row pt-2 px-5 pb-5">
+					<div class="col-md-12 text-center">
+						<h3>Modificar les meves dades</h3>
+						<h5>(deixa en blanc el que no vulguis canviar)</h5>
+						<form id="dadesUsuari">
+							<!--/* errors */-->
+							<div class="alert alert-danger d-none"></div>
+							<!--/* Nou nom i cognoms */-->
+							<div class="input-group flex-nowrap">
+								<span class="input-group-text new"> 
+									<i class="fas fa-user"></i>
+								</span>
+								<label class="d-none" for="name">Nous nom i cognoms</label>
+								<input class="form-control" type="text" id="name" title="Nous nom i cognoms" placeholder="Nous nom i cognoms" aria-label="Nous nom i cognoms" aria-describedby="addon-wrapping">
+							</div>
+							<!--/* Correu antic */-->										
+							<div class="input-group flex-nowrap">
+								<span class="input-group-text"> 
+									<i class="fas fa-envelope"></i>
+								</span>
+								<label class="d-none" for="emailOld">Correu electrònic actual</label>
+								<input class="form-control" type="text" id="emailOld" title="Correu electrònic actual" placeholder="Correu electrònic actual" aria-label="Correu electrònic actual" aria-describedby="addon-wrapping">
+							</div>									
+							<!--/* Correu nou */-->										
+							<div class="input-group flex-nowrap">
+								<span class="input-group-text new"> 
+									<i class="fas fa-envelope"></i>
+								</span>
+								<label class="d-none" for="email">Nou correu electrònic</label>
+								<input class="form-control" type="text" id="email" title="Nou correu electrònic" placeholder="Nou correu electrònic" aria-label="Nou correu electrònic" aria-describedby="addon-wrapping">
+							</div>
+							<!--/* Correu nou */-->
+							<div class="input-group flex-nowrap">
+								<span class="input-group-text new"> 
+									<i class="fas fa-envelope" ></i>
+								</span>
+								<label class="d-none" for="confirmEmail">Confirma el nou correu electrònic</label>
+								<input class="form-control" type="text" id="confirmEmail" title="Confirma el nou correu electrònic" placeholder="Confirma el nou correu electrònic" aria-label="Confirma el nou correu electrònic" aria-describedby="addon-wrapping">
+							</div>
+							<!--/* Contrasenya antiga */-->			
+							<div class="input-group flex-nowrap">
+								<span class="input-group-text"> 
+									<i class="fas fa-key"></i>
+								</span>
+								<label class="d-none" for="passwordOld">Contrasenya actual</label>
+								<input class="form-control" type="password" id="passwordOld" title="Contrasenya actual" placeholder="Contrasenya actual" aria-label="Contrasenya actual" aria-describedby="addon-wrapping">
+							</div>											
+							<!--/* Contrasenya nova */-->			
+							<div class="input-group flex-nowrap">
+								<span class="input-group-text new"> 
+									<i class="fas fa-key"></i>
+								</span>
+								<label class="d-none" for="password">Nova contrasenya (mínim vuit caràcters)</label>
+								<input class="form-control" type="password" id="password" title="Nova contrasenya (mínim vuit caràcters)" placeholder="Nova contrasenya (mínim vuit caràcters)" aria-label="Nova contrasenya (mínim vuit caràcters)" aria-describedby="addon-wrapping">
+							</div>
+							<!--/* Contrasenya nova */-->
+							<div class="input-group flex-nowrap pb-3">
+								<span class="input-group-text new"> 
+									<i class="fas fa-key"></i>
+								</span>
+								<label class="d-none" for="confirmPassword">Cofirma la nova contrasenya</label>
+								<input class="form-control" type="password" id="confirmPassword" title="Confirma la nova contrasenya" placeholder="Confirma la nova contrasenya" aria-label="Confirma la contrasenya" aria-describedby="addon-wrapping">
+							</div>							
+							<button class="boto" type="submit" name="login-submit">
+								<span>Modificar</span>
+							</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!--/* els estils propis del formulari van aquí, per no duplicar-los als style2.css del front i del back. */-->
+<!--/* a tenir en compte que aquest formulari se mostra al front i al back */-->			
+<style type="text/css">
+	#dadesUsuariModal h2, #dadesUsuariModal h3 {
+    	font-family: "Balsamiq Sans", sans-serif;
+    	font-size: 2.48em;
+    	font-weight: 600;
+    	margin-bottom: 0;
+    	color: #2e2b2d;
+	}
+	
+	#dadesUsuariModal h5 {
+		font-family: "Balsamiq Sans", sans-serif;	
+		margin-bottom: 1em;
+    	color: #2e2b2d;
+	}
+	
+	#dadesUsuariModal .button.close {
+    	color: #2e2b2d;
+    	font-size: 1.5em;
+    	opacity:1;
+	}
+	
+	#dadesUsuariModal form .input-group {
+		margin:1em 0em;
+	}	
+	
+	#dadesUsuariModal form span.input-group-text {
+    	/* background-color: fff; */
+    	opacity: .8;
+	}
+	
+	#dadesUsuariModal form span.input-group-text svg {
+    	color: #2e2b2d;
+    	font-size: 1.2em;
+    	margin-left: 0;
+	}	
+	
+	#dadesUsuariModal form span.input-group-text.new svg {
+		color: #ff8e4d !important;
+	}	
+		
+	#dadesUsuariModal form input {
+    	border-left-color: #f7ede9;
+    	/* background-color: fff; */
+    	font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji" !important;
+	    font-size: 12.8px;
+    	opacity: .8;
+    	padding-left: 1em;
+	}
+		
+	#dadesUsuariModal p {
+	    padding-bottom: 3em;
+        font-family: "Montserrat", sans-serif;
+    	color: #2e2b2d;
+    	font-size: .8em;	
+	}	
+	
+	#dadesUsuariModal form a:hover {
+		color: #0a58ca;
+	}
+	
+	#dadesUsuariModal form button.boto {
+		display: -webkit-inline-box;
+		display: -ms-inline-flexbox;
+		display: inline-flex;
+		z-index: 0;
+		border: 0;
+		padding: 0;
+		position: relative;
+		background-color: transparent;
+		text-decoration: none!important
+	}
+	
+	#dadesUsuariModal form button.boto span {
+		font-size: 1.4em;
+		font-weight: 600;
+		font-family: "Balsamiq Sans", sans-serif;
+		letter-spacing: 1px;
+		color: #f7ede9;
+		padding: 8px 35px;
+		border: 3px solid black;
+		border-radius: .25em
+	}
+	
+	#dadesUsuariModal form button.boto:after {
+		position: absolute;
+		top: 10px;
+		left: 10px;
+		height: 100%;
+		width: 100%;
+		border-radius: .35em;
+		background-color: #ff8e4d;
+		content: "";
+		z-index: -1;
+		-webkit-transition: width 0.1s ease-out 0.1s, -webkit-transform 0.1s ease-in;
+		transition: width 0.1s ease-out 0.1s, -webkit-transform 0.1s ease-in;
+		-o-transition: transform 0.1s ease-in, width 0.1s ease-out 0.1s;
+		transition: transform 0.1s ease-in, width 0.1s ease-out 0.1s;
+		transition: transform 0.1s ease-in, width 0.1s ease-out 0.1s, -webkit-transform 0.1s ease-in
+	}
+	
+	#dadesUsuariModal form button.boto:hover:after {
+		-webkit-transform: translate(-10px, -10px);
+		-ms-transform: translate(-10px, -10px);
+		transform: translate(-10px, -10px);
+		width: calc(100%)
+	}
+	
+	#dadesUsuariModal form button.boto:active:after {
+		width: 100%
+	}
+	
+</style>

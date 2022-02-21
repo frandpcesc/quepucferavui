@@ -1,0 +1,15 @@
+<section class="seccio" id="com">		
+	<div class="forms">
+		<h2>Com et trobes avui?</h2>
+		<div th:each="anim : ${llistaAnims}">
+			<fieldset>
+				<legend></legend>		
+				<label th:for="${#ids.next('anims')}">
+					<input type="radio" th:field="*{anims}" th:value="${anim.id}">
+					<span class="rdo"></span>
+					<span th:text="${anim.estat}"></span>
+				</label>
+			</fieldset>
+		</div>
+	</div>
+</section>

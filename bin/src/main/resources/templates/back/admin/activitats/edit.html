@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+	<head>
+	  	<!--/* Required meta tags ------------------------------------------------- */-->
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <meta name="description" content="Projecte final 2021 per DAW">
+	    <meta name="keywords" content="projecte, DAW">
+	    <meta name="author" content="Grup 5">
+	    <!--/* CSS ---------------------------------------------------------------- */-->
+	    <link rel="stylesheet" href="/css/front/bootstrap.min.css">
+	    <!-- <link rel="stylesheet" href="/css/front/style.css"> -->
+	    <link rel="preconnect" href="https://fonts.googleapis.com">
+	    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+	    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital,wght@0,400;0,700;1,700&amp;family=Montserrat:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+	    <link rel="stylesheet" href="https://d33wubrfki0l68.cloudfront.net/css/68818763319cf667ed141dc03e654e8db3424772/assets/css/animate.min.css">
+	    <link rel="stylesheet" href="/css/front/fontawesome.min.css">
+	    <link rel="stylesheet" href="/css/front/brands.min.css">
+	    <link rel="stylesheet" href="/css/front/solid.min.css">
+	    <link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico">
+	    <title>Quepucferavui.cat > Edita activitat</title>
+	</head>
+	
+	<body class="snippet-body" oncontextmenu="return false">
+	
+		<div>
+			<a href="/back/admin">Administració</a> > 
+			<a href="/back/admin/activitats">Activitats<a> >
+			Edita activitat <span th:text="${id}"></span>
+		</div>
+		
+		<style type="text/css">
+			form.row.g-0 { 
+				width: 95% !important; 
+				margin-left:5px !important;
+			}
+		</style>
+		
+		<form class="row g-0" th:action="@{/back/admin/activitats/update/{id}(id=${activitat.id})}" th:object="${activitat}" method="post">
+			<div class="row mt-2">
+				<div class="col">
+					<label for="name">Nom</label>
+		    		<input type="text" class="form-control" th:field="*{name}" id="name" name="name" placeholder="Nom">
+	    		</div>
+	    		<div class="col">
+					<label for="etiqueta">Etiquetes</label>
+	    			<input type="text" class="form-control" th:field="*{etiqueta}" id="etiqueta" name="etiqueta" placeholder="Etiquetes">
+	    		</div>
+	    	</div>
+    		<div class="row mt-2">
+    			<div class="col">
+					<label for="descripcio">Descripció</label>
+					<textarea class="form-control" th:field="*{descripcio}" id="descripcio" name="descripcio" placeholder="Descripció" rows="3"></textarea>
+    			</div>
+    		</div>
+    		<div class="row mt-2">
+    			<div class="col-2">    		
+					<label for="dataInici">Data inici</label>
+    				<input type="date" class="form-control" th:value="${activitat.dataInici}?${#dates.format(activitat.dataInici, 'yyyy-MM-dd')}:''" id="dataInici" name="dataInici" placeholder="Data inici">
+    			</div>
+    			<div class="col-2">
+					<label for="dataFi">Data fi</label>
+    				<input type="date" class="form-control" th:value="${activitat.dataFi}?${#dates.format(activitat.dataFi, 'yyyy-MM-dd')}:''" id="dataFi" name="dataFi" placeholder="Data fi">
+    			</div>	    
+    			<div class="col-1">
+					<label class="form-check-label" for="visible">Visible</label>
+    				<input class="form-check-input d-block" th:field="*{visible}" type="checkbox" id="visible" name="visible" placeholder="Visible">
+    			</div>	
+    			<div class="col">
+					<label for="url">URL</label>
+    				<input type="text" class="form-control" th:field="*{url}" id="url" placeholder="URL">    			
+    			</div>     			     		
+    		</div>
+    		<div class="row mt-3">
+    			<div class="col">   
+    				<label>Com et trobes avui?</label>
+    				<div th:each="anim : ${llistaAnims}">
+						<label th:for="${#ids.next('anims')}">
+							<input type="checkbox" th:field="*{anims}" th:value="${anim.id}">
+							<span class="rdo"></span>
+							<span th:text="${anim.estat}"></span>
+						</label>
+					</div>
+				</div>
+    			<div class="col">   
+    				<label>Amb qui vols anar?</label>
+					<div th:each="company : ${llistaCompanys}">
+						<label th:for="${#ids.next('companys')}">
+							<input type="checkbox" th:field="*{companys}" th:value="${company.id}">
+							<span class="rdo"></span>
+							<span th:text="${company.companys}"></span>
+						</label>
+					</div>
+				</div>
+    			<div class="col">   
+    				<label>Quan vols anar-hi?</label>
+					<div th:each="horari : ${llistaHoraris}">
+						<label th:for="${#ids.next('horaris')}">
+							<input type="checkbox" th:field="*{horaris}" th:value="${horari.id}">
+							<span class="rdo"></span>
+							<span th:text="${horari.franja}"></span>
+						</label>
+					</div>
+				</div>
+    		</div>  
+ 			<div class="row mt-2">
+    			<div class="col-1">
+    				<label for="codi">Codi postal</label>
+					<select id="codi" name="codi" class="form-select">
+						<option selected>Codi postal</option>
+						<option	th:each="codi  : ${llistaCodis}"
+								th:value="${codi.id}" 
+								th:text="${codi.codiPostal}"
+								th:selected="(${codi.id} == *{codi.id})">		
+						</option>
+					</select>    			
+    			</div>
+    			<div class="col-3">
+    				<label for="municipi">Municipi</label>
+					<select id="municipi" name="municipi" class="form-select">
+						<option selected>Municipi</option>
+						<option	th:each="municipi  : ${llistaMunicipis}"
+								th:value="${municipi.id}" 
+								th:text="${municipi.nom}"
+								th:selected="(${municipi.id} == *{municipi.id})">		
+						</option>
+					</select>
+					<!--/* <input type="hidden" th:field="*{municipi}" id="municipiId"> */-->
+    			</div>   		
+    		</div>  	
+    		<div class="row mt-2">	
+    			<div class="col">
+    				<label for="dies">Dies</label>
+					<textarea class="form-control" th:field="*{dies}" id="dies" name="dies" placeholder="Dies" rows="3"></textarea>
+    			</div>
+    		</div>    	
+    		<div class="row mt-2">	
+    			<div class="col">
+    				<label for="dades">Dades</label>
+					<select id="dades" name="dades" class="form-select">
+						<option selected>Dades</option>
+						<option	th:each="dades  : ${llistaDades}"
+								th:value="${dades.id}" 
+								th:text="${dades.name}"
+								th:selected="(${dades.id} == *{dades.id})">		
+						</option>
+					</select>
+    			</div>
+    		</div> 
+    		<div class="row mt-2">
+    			<div class="col">
+    				<label for="imatge">Imatge</label>
+    				<textarea class="form-control" th:field="*{imatge}" id="imatge" name="imatge" placeholder="Imatge" rows="5"></textarea>
+    			</div>
+    		</div> 
+    		<div class="row mt-2">
+    			<div class="col-1">   	
+    				<button type="submit" class="btn btn-primary">Guarda</button>
+    			</div>
+    			<div class="col-1 mt-1">
+			    	<a class="btn btn-secondary" th:href="@{/private/admin/activitats/delete/{id}(id=${activitat.id})}">Esborra</a>
+			    </div>			    
+    		</div>				
+      	</form>
+	</body>
+	
+	<!--/* ------------------------------------------------------------------------ */-->
+	<!--/* (Optional) JAVASCRIPT -------------------------------------------------- */-->
+	<!--/* jQuery first, then Popper.js, then Bootstrap JS ------------------------ */-->
+	<!--/* ------------------------------------------------------------------------ */-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+	<script src="https://kit.fontawesome.com/628c8d2499.js" crossorigin="anonymous"></script>
+	<script src="/js/front/bootstrap.min.js"></script>
+	<script defer="" src="/js/front/fontawesome_all.min.js"></script>
+	<script src="/js/front/script.js"></script>
+	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script src="/js/front/responsive_waterfall.js"></script>
+	<script src="/js/front/app.js"></script
+
+</html>

@@ -1,0 +1,48 @@
+<section class="seccio" id="on">
+
+	<div class="forms_onets">
+		<h2>Diguem on ets i et diré on pots anar.</h2>
+		<span>Només volem afinar una mica més la teva cerca</span>
+		<div class="combos container-fluid d-flex justify-content-between">
+			<div class="col-md-4" id="cpost">
+				<input class="form-control" type="text" id="cPostal" th:field="*{codi}" placeholder="Codi Postal">
+			</div>
+			<div class="col-md-8" id="muni">
+				<select id="municipi" name="municipi" class="form-select">
+					<option value="" selected="true" disabled="disabled">Municipi</option>
+				</select>
+			</div>
+		</div>
+		<div id="txt-error"><span>El codi postal o municipi no és correcte</span></div>
+		<div class="d-flex justify-content-between mt-5">
+			<a class="boto2" id="btn-somhi">
+				<span>Ara l'última!</span>
+			</a>
+			<button class="boto2" type="submit" data-dismiss="modal" id="btn-gracies">
+				<span>No cal, gràcies!</span>
+			</button>
+		</div>
+	</div>
+	
+  	<div class="ocult">
+  		<div class="forms">
+			<h2>Per on vols anar?</h2>
+			<div th:each="distancia : ${llistaDistancia}">
+				<label>
+					<input type="radio" name="distancia" th:value="${distancia.id}">
+					<span class="rdo"></span>
+					<span th:text="${distancia.nom}"></span>
+				</label>
+			</div>
+			<div class="d-flex justify-content-center">
+				<button class="boto2 mt-4" type="submit" data-dismiss="modal" name="activitats-submit" id="activitats-submit">
+					<span>Vull veure que faré!</span>
+				</button>
+			</div>						
+  		</div>
+  	</div>
+  	
+	<!--/* PEU -------------------------------------------------------------------- */-->
+	<div th:replace="front/static/footerIndex"></div>
+		
+</section>

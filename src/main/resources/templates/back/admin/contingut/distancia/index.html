@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+	<head>
+	  	<!--/* Required meta tags ------------------------------------------------- */-->
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <meta name="description" content="Projecte final 2021 per DAW">
+	    <meta name="keywords" content="projecte, DAW">
+	    <meta name="author" content="Grup 5">
+	    <!--/* CSS ---------------------------------------------------------------- */-->
+	    <link rel="stylesheet" href="/css/back/bootstrap.min.css">
+	    <link rel="stylesheet" href="/css/back/style.css">
+	    <link rel="stylesheet" href="/css/back/style2.css">
+	    <link rel="stylesheet" href="/css/back/forms.css">
+	    <link rel="preconnect" href="https://fonts.googleapis.com">
+	    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+	    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital,wght@0,400;0,700;1,700&amp;family=Montserrat:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+	    <link rel="stylesheet" href="https://d33wubrfki0l68.cloudfront.net/css/68818763319cf667ed141dc03e654e8db3424772/assets/css/animate.min.css">
+	    <link rel="stylesheet" href="/css/back/fontawesome.min.css">
+	    <link rel="stylesheet" href="/css/back/brands.min.css">
+	    <link rel="stylesheet" href="/css/back/solid.min.css">
+    	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css">
+    	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">	    
+	    <link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico">
+	    <title>Quepucferavui.cat > Per on vols anar?</title>
+	</head>
+	
+	<body class="snippet-body" oncontextmenu="return false">
+	
+		<!--/* CAPÇALERA ---------------------------------------------------------- */-->
+		<div th:replace="back/admin/static/header"></div>	
+		
+		<!--/* DADES USUARI (modificar les meves dades) --------------------------- */-->
+		<div th:replace="back/usuari/form/dadesUsuari"></div>		
+	
+		<div class="container">
+		
+			<!--/* títol */-->
+        	<div class="container-fluid text-center">
+            	<h1>Per on vols anar?</h1>
+        	</div>
+        	<div class="tornar">
+				<a href="/back/admin/contingut">Tornar a l'index</a>
+        	</div>	
+
+			<!--/* CONTINGUT ------------------------------------------------------ */-->						
+			<div class="pt-4 llista-usuaris">
+				<!--/* capçalera taula */-->
+				<div class="row primeraLinea">
+	            	<div class="col-1 pt-1 text-center"><span>#id</span></div>
+	                <div class="col-5 pt-1 text-center"><span>Distància</span></div>
+	                <div class="col-2 pt-1 text-center"><span>Posició</span></div>
+	                <div class="col-2"></div>
+	            </div>		
+	            <hr>
+			    <!--/* files taula */-->	            
+			    <fila th:each="distancia : ${llistaDistancia}">
+			    	<div class="row">
+						<div class="col-1 pt-1 text-center">#<span th:text="${distancia.id}"></span></div>
+						<div class="col-5 pt-1 text-center"><span th:text="${distancia.nom}"></span></div>
+						<div class="col-2 pt-1 text-center"><span th:text="${distancia.posicio}"></span></div>
+						<div class="col-2 text-center">	
+				     		<a class="boto2" th:href="@{/back/admin/contingut/distancia/edit/{id}(id=${distancia.id})}">Editar</a>
+						</div>
+					</div>
+					<hr>
+				</fila>
+			</div>
+			
+		</div>
+	    <!--/* fi .container */-->    
+		
+	</body>
+
+	<!--/* ------------------------------------------------------------------------ */-->
+	<!--/* (Optional) JAVASCRIPT -------------------------------------------------- */-->
+	<!--/* jQuery first, then Popper.js, then Bootstrap JS ------------------------ */-->
+	<!--/* ------------------------------------------------------------------------ */-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.js"></script>
+	<script src="/js/back/bootstrap.min.js"></script>
+	<script src="https://kit.fontawesome.com/628c8d2499.js" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script src="/js/back/script.js"></script>	
+
+</html>

@@ -1,0 +1,15 @@
+<section class="seccio" id="quan">
+	<div class="forms">
+		<h2>Quan vols anar-hi?</h2>
+		<div th:each="horari : ${llistaHoraris}">
+			<fieldset>
+				<legend></legend>
+				<label th:for="${#ids.next('horaris')}">
+					<input type="radio" th:field="*{horaris}" th:value="${horari.id}">
+					<span class="rdo"></span>
+					<span th:text="${horari.franja}"></span>
+				</label>
+			</fieldset>
+		</div>
+	</div>
+</section>

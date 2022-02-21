@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+	<head>
+	  	<!--/* Required meta tags ------------------------------------------------- */-->
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <meta name="description" content="Projecte final 2021 per DAW">
+	    <meta name="keywords" content="projecte, DAW">
+	    <meta name="author" content="Grup 5">
+	    <!--/* CSS ---------------------------------------------------------------- */-->
+	    <link rel="stylesheet" href="/css/front/bootstrap.min.css">
+	    <!-- <link rel="stylesheet" href="/css/front/style.css"> -->
+	    <link rel="preconnect" href="https://fonts.googleapis.com">
+	    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+	    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital,wght@0,400;0,700;1,700&amp;family=Montserrat:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+	    <link rel="stylesheet" href="https://d33wubrfki0l68.cloudfront.net/css/68818763319cf667ed141dc03e654e8db3424772/assets/css/animate.min.css">
+	    <link rel="stylesheet" href="/css/front/fontawesome.min.css">
+	    <link rel="stylesheet" href="/css/front/brands.min.css">
+	    <link rel="stylesheet" href="/css/front/solid.min.css">
+	    <link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico">
+	    <title>Quepucferavui.cat > Amb qui vols anar?</title>
+	</head>
+	
+	<body class="snippet-body" oncontextmenu="return false">
+	
+		<div>
+			<a href="/back/admin">Administració</a> >
+			<a href="/back/admin/contingut"> Contingut<a> >
+			<a href="/back/admin/contingut/acompanyament"> Amb qui vols anar?<a> >
+			Edita acompanyament <span th:text="${id}"></span>
+		</div>
+		
+		<style type="text/css">
+			form.row.g-0 { 
+				width: 95% !important; 
+				margin-left:5px !important;
+			}
+		</style>
+		
+		<div th:if="!${#strings.isEmpty(ok)}" th:text="${ok}" class="alert alert-success" role="alert"></div>
+		<div th:if="!${#strings.isEmpty(errors)}" th:text="${errors}" class="alert alert-danger" role="alert"></div>		
+		
+		<form class="row g-0" th:action="@{/back/admin/contingut/acompanyament/update/{id}(id=${acompanyament.id})}" th:object="${acompanyament}" method="post">
+			<div class="row mt-2">
+				<div class="col">
+					<label for="acompanyament">Acompanyament</label>
+		    		<input type="text" class="form-control" th:field="*{companys}" id="acompanyament" name="acompanyament" placeholder="Acompanyament">
+	    		</div>
+			</div>
+			<div class="row mt-2">
+				<div class="col">
+					<label for="posicio">Posició</label>
+		    		<input type="text" class="form-control" th:field="*{posicio}" id="posicio" name="posicio" placeholder="Posició">
+	    		</div>
+			</div>			
+    		<div class="row mt-2">
+    			<div class="col-1">   	
+    				<button type="submit" class="btn btn-primary">Guarda</button>
+    			</div>	    
+    		</div>				
+      	</form>
+	</body>
+	
+	<!--/* ------------------------------------------------------------------------ */-->
+	<!--/* (Optional) JAVASCRIPT -------------------------------------------------- */-->
+	<!--/* jQuery first, then Popper.js, then Bootstrap JS ------------------------ */-->
+	<!--/* ------------------------------------------------------------------------ */-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+	<script src="https://kit.fontawesome.com/628c8d2499.js" crossorigin="anonymous"></script>
+	<script src="/js/front/bootstrap.min.js"></script>
+	<script defer="" src="/js/front/fontawesome_all.min.js"></script>
+	<script src="/js/front/script.js"></script>
+	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script src="/js/front/responsive_waterfall.js"></script>
+	<script src="/js/front/app.js"></script
+
+</html>

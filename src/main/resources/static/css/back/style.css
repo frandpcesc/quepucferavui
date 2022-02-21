@@ -1,0 +1,591 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    background: #2e2b2d !important;
+    position: relative;
+    /* color: #f7ede9; */
+}
+
+header {
+    position: fixed;
+    background: #2e2b2d;
+    z-index: 3;
+}
+
+a {
+    color: #f7ede9;
+}
+
+a:hover {
+    color: #f7ede9;
+    text-decoration: line-through;
+}
+
+h1 {
+    color: #f7ede9;
+    font-family: 'Balsamiq Sans', sans-serif;
+    font-size: 3em !important;
+    font-weight: 900;
+    ;
+}
+
+h2 {
+    color: #ff8e4d;
+    font-family: 'Balsamiq Sans', sans-serif;
+}
+
+hr {
+    margin-top: .6rem !important;
+    margin-bottom: .6rem !important;
+}
+
+div small span,
+div small a {
+    color: #f7ede9;
+}
+
+div small span:nth-child(2) {
+    color: #ff8e4d;
+    font-weight: bold;
+}
+
+div small a:hover {
+    color: #ff8e4d;
+    text-decoration: line-through;
+}
+
+.pleft-0 {
+    padding-left: 0 !important;
+}
+
+.mnu {
+    padding-top: .9em;
+}
+
+.capsalera {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    top: 0;
+    z-index: 3;
+    display: flex;
+    width: 100%;
+    max-height: 5em;
+    min-height: 1em;
+}
+
+.capsalera .logo {
+    font-family: 'Balsamiq Sans', sans-serif;
+    font-weight: 600;
+}
+
+.capsalera .logo a {
+    color: #f7ede9;
+    text-decoration: none;
+}
+
+.capsalera .logo a:hover {
+    text-decoration: none !important;
+}
+
+.capsalera .logo a:nth-child(1) {
+    font-size: calc(1.5rem + 1.5vw);
+}
+
+.capsalera .logo a:nth-child(2) {
+    font-size: calc(1.5rem + 1.5vw);
+}
+
+.capsalera .logo a:nth-child(3) {
+    font-size: calc(1.5rem + 1.5vw);
+}
+
+.capsalera .logo a:nth-child(4) {
+    text-decoration: none;
+    font-size: calc(1.6rem + 1.6vw);
+    color: #ff8e4d;
+}
+
+.capsalera .logo a:nth-child(5) {
+    font-size: calc(.75rem + 1.1vw);
+}
+
+.capsalera .fa-user {
+    font-size: calc(0.8rem + 1.5vw);
+    color: #f7ede9;
+}
+
+.capsalera .fa-user:hover {
+    color: #ff8e4d !important;
+    cursor: pointer !important;
+}
+
+.submenu nav {
+    display: inline-flex;
+    list-style: none;
+}
+
+.submenu nav li {
+    padding-left: 0.2em;
+}
+
+.submenu nav li a {
+    color: #f7ede9;
+}
+
+
+/* targeta  */
+
+.container-cards {
+    display: flex;
+    max-width: 60em;
+    min-width: 45em;
+    padding: 5em 3em 2em 3em;
+    margin: 0em auto;
+    /* background-color: #d7d1d5; */
+    border-radius: 4.2px;
+    box-shadow: 0px 3px 10px -2px rgb(0 0 0 / 20%);
+}
+
+.botons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.botons a {
+    transition: .4s;
+    text-decoration: none;
+}
+
+.botons a:hover {
+    color: #d7d1d5;
+}
+
+.recipe,
+.pizza-box {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.img-box {
+    flex: 3 1 30ch;
+    height: calc(200px + 4vw);
+    overflow: hidden;
+}
+
+.img-box img {
+    max-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    -o-object-fit: cover;
+    object-fit: cover;
+    -o-object-position: 50% 50%;
+    object-position: 50% 50%;
+}
+
+.recipe {
+    border: 2px solid #f2f2f2;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.recipe-content {
+    padding: 16px 32px;
+    flex: 4 1 40ch;
+    font-family: "Monserrat", Helvetica, Arial, sans-serif;
+}
+
+.recipe-tags {
+    margin: 0 -2px;
+}
+
+.recipe-tag {
+    display: inline-block;
+    margin: 8px 2px;
+    font-size: 0.875em;
+    font-style: italic;
+    text-transform: capitalize;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    /* color: #ff8e4d; */
+}
+
+.recipe-title {
+    margin: 0;
+    font-size: clamp(1.8em, 1.5vw, 2em) !important;
+    font-family: "Balsamiq Sans", Helvetica, Arial, sans-serif;
+    text-transform: uppercase;
+}
+
+.recipe-title a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.recipe-metadata {
+    margin: 0;
+}
+
+.recipe-rating {
+    font-size: 1.2em;
+    letter-spacing: 0.05em;
+    /* color: #ff8e4d; */
+}
+
+.recipe-rating span {
+    color: var(--grey);
+}
+
+.recipe-votes {
+    font-size: 1.1em;
+    /* font-style: italic; */
+    color: #ff8e4d;
+}
+
+.recipe-save {
+    display: flex;
+    align-items: center;
+    padding: 3px 8px 3px 8px;
+    border-radius: 4px;
+    border: 2px solid currentColor;
+    color: #ff8e4d;
+    background: none;
+    cursor: pointer;
+    font-size: .75em;
+    font-weight: bold;
+}
+
+.recipe-save svg {
+    margin-right: 6px;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+    margin: 2em;
+}
+
+.b-mod {
+    max-width: 100px;
+    text-decoration: none;
+    transition: .4s;
+}
+
+.b-mod:hover {
+    text-decoration: none;
+    color: #d7d1d5;
+}
+
+
+/* Body Layout */
+
+* {
+    box-sizing: border-box;
+}
+
+.big {
+    width: clamp(320px, 65%, 65%);
+    padding: 24px;
+}
+
+.small {
+    width: clamp(320px, 35%, 480px);
+    padding: 24px;
+}
+
+
+/* Tags */
+
+.bootstrap-tagsinput {
+    width: 100%;
+    padding: 6px 6px !important;
+}
+
+.input-tags {
+    width: 100%;
+    padding: 15px;
+    display: block;
+    margin: 0 auto;
+}
+
+.label-info {
+    background-color: #ff8e4d;
+    padding: 3px;
+}
+
+
+/* // menu entrada */
+
+.section_our_solution .row {
+    align-items: center;
+}
+
+.our_solution_category {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.solution_card svg {
+    font-size: 3em;
+}
+
+.our_solution_category .solution_cards_box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.solution_cards_box .solution_card {
+    flex: 0 50%;
+    background: #d7d1d5;
+    box-shadow: 0 2px 4px 0 rgba(195, 159, 136, 0.2), 0 5px 15px 0 rgba(37, 44, 97, 0.15);
+    border-radius: 15px;
+    margin: 10px;
+    padding: 20px 25px;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    min-height: 265px;
+    transition: 0.7s;
+}
+
+.solution_cards_box .solution_card:hover {
+    background: #ff8e4d;
+    color: #d7d1d5;
+    transform: scale(1.1);
+    z-index: 9;
+}
+
+.solution_cards_box .solution_card:hover::before {
+    background: rgb(85 108 214 / 10%);
+}
+
+.solution_cards_box .solution_card:hover .solu_title h3,
+.solution_cards_box .solution_card:hover .solu_description p {
+    color: #d7d1d5;
+}
+
+.solution_cards_box .solution_card:before {
+    content: "";
+    position: absolute;
+    background: rgb(46 43 45 / 4%);
+    width: 170px;
+    height: 400px;
+    z-index: -1;
+    transform: rotate(42deg);
+    right: -56px;
+    top: -23px;
+    border-radius: 35px;
+}
+
+.solution_cards_box .solution_card:hover .solu_description button {
+    background: #d7d1d5 !important;
+    color: #ff8e4d;
+}
+
+.solution_card .so_top_icon {}
+
+.solution_card .solu_title h3 {
+    font-family: 'Balsamiq Sans', sans-serif;
+    font-weight: 900;
+    color: #212121;
+    font-size: 1.3rem;
+    margin-top: 13px;
+    margin-bottom: 13px;
+}
+
+.solution_card .solu_description p {
+    font-size: 15px;
+    margin-bottom: 15px;
+}
+
+.solution_card .solu_description button {
+    border: 0;
+    border-radius: 15px;
+    background: linear-gradient( 140deg, #fa8a01 0%, #fa8a01 50%, #fa8a01 75%) !important;
+    color: #d7d1d5;
+    font-weight: 500;
+    font-size: 1rem;
+    padding: 5px 16px;
+}
+
+.our_solution_content h1 {
+    text-transform: capitalize;
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
+}
+
+.our_solution_content p {}
+
+.hover_color_bubble {
+    position: absolute;
+    background: rgb(54 81 207 / 15%);
+    width: 100rem;
+    height: 100rem;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    top: 16rem;
+    border-radius: 50%;
+    transform: rotate(-36deg);
+    left: -18rem;
+    transition: 0.7s;
+}
+
+.solution_cards_box .solution_card:hover .hover_color_bubble {
+    top: 0rem;
+}
+
+.solution_cards_box .solution_card .so_top_icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #d7d1d5;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.solution_cards_box .solution_card .so_top_icon img {
+    width: 40px;
+    height: 50px;
+    object-fit: contain;
+}
+
+
+/* llistes d'usuaris */
+
+.llista-usuaris {
+    color: #d7d1d5;
+}
+
+.llista-usuaris div {
+    display: flex;
+    justify-content: center;
+}
+
+.llista-usuaris div div {
+    height: 100%;
+}
+
+a.boto2,
+button.boto2 {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    background-color: #ff8e4d;
+    padding: 0.15em .75em;
+    border-radius: 0.25em;
+    border: none;
+    color: #f7ede9;
+    font-family: "Balsamiq Sans", sans-serif;
+    font-size: 1.1em;
+    text-decoration: none;
+    border: 2px solid #000;
+    -webkit-transition: .4s;
+    -o-transition: .4s;
+    transition: .4s;
+}
+
+button.boto2:hover,
+a.boto2:hover {
+    border: 2px solid #f7ede9;
+    background-color: #2e2b2d;
+    text-decoration: line-through;
+}
+
+.primeraLinea {
+    color: #fa8a01;
+}
+
+.tornar {
+    display: flex;
+    justify-content: end;
+}
+
+.tornar a {
+    color: #f7ede9;
+    text-decoration: underline;
+}
+
+.tornar a:hover {
+    color: #f7ede9;
+    text-decoration: line-through;
+}
+
+.contPagNotobada {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.contPagNotobada svg {
+    color: #f7ede9;
+    font-size: 7em;
+    margin-bottom: .2em;
+    text-align: center;
+}
+
+.pagNotobada {
+    width: 45vw;
+    font-size: 1.3em;
+    text-align: center;
+}
+
+.pagNotobada h1 {
+    text-align: left;
+}
+
+.pagNotobada h1 span {
+    padding-top: .5em;
+    display: block;
+    font-size: .55em;
+}
+
+
+/*start media query*/
+
+@media screen and (min-width: 320px) {
+    .sol_card_top_3 {
+        position: relative;
+        top: 0;
+    }
+    .our_solution_category {
+        width: 100%;
+        margin: 0 auto;
+    }
+    .our_solution_category .solution_cards_box {
+        flex: auto;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .our_solution_category .solution_cards_box {
+        flex: 1;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .sol_card_top_3 {
+        position: relative;
+        top: -3rem;
+    }
+    .our_solution_category {
+        width: 50%;
+        margin: 0 auto;
+    }
+}

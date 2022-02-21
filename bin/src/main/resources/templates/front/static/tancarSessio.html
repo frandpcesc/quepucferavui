@@ -1,0 +1,127 @@
+<!--/* modal per tancar sessió */-->
+
+<div class="modal fade auto-off" id="tancarSessioModal" tabindex="-1" role="dialog" aria-labelledby="demoModal" aria-hidden="true">
+	<div class="modal-dialog animated zoomInDown modal-dialog-centered" role="document">
+    	<div class="modal-content py-3">
+        	<div class="container-fluid d-flex flex-column">
+            	<div class="button close justify-content-end text-end" type="button" data-dismiss="modal" aria-label="Close">
+            		<i class="fas fa-times-circle fa-lg"></i>
+            	</div>
+            	<div class="row pt-2 px-5 pb-5">
+              		<div class="col-md-12 text-center">
+              			<i class="fas fa-door-open fa-4x"></i>
+                		<p class="text-start">
+                			<span sec:authentication="name"></span>, segur que vols tancar la sessió?
+                		</p>
+                		<a class="boto" type="button" onclick="location.href='/logout'">
+                			<span>Sí, tanca la meva sessió</span>
+                		</a>
+              		</div>
+            	</div>
+          	</div>
+        </div>
+     </div>
+</div>
+
+<style type="text/css">
+
+	#tancarSessioModal .button.close {
+		color: #2e2b2d;
+		font-size: 1.5em;
+	}
+	
+	#tancarSessioModal .fa-door-open {
+		color: #2e2b2d;
+		margin: 0.2em 0 0.4em 0;
+	}
+	
+	#tancarSessioModal p {
+		padding-bottom: 3em;
+		font-family: "Montserrat", sans-serif;
+		color: #2e2b2d;
+		font-size: .8em;
+	}
+	
+	#tancarSessioModal a.boto,
+	#tancarSessioModal button.boto {
+		display: -webkit-inline-box;
+		display: -ms-inline-flexbox;
+		display: inline-flex;
+		z-index: 0;
+		border: 0;
+		padding: 0;
+		position: relative;
+		background-color: transparent;
+		text-decoration: none!important
+	}
+	
+	#tancarSessioModal a.boto span,
+	#tancarSessioModal button.boto span {
+		font-size: 1.4em;
+		font-weight: 600;
+		font-family: "Balsamiq Sans", sans-serif;
+		letter-spacing: 1px;
+		color: #f7ede9;
+		padding: 8px 35px;
+		border: 3px solid black;
+		border-radius: .25em
+	}
+	
+	#tancarSessioModal a.boto:after,
+	#tancarSessioModal button.boto:after {
+		position: absolute;
+		top: 10px;
+		left: 10px;
+		height: 100%;
+		width: 100%;
+		border-radius: .35em;
+		background-color: #ff8e4d;
+		content: "";
+		z-index: -1;
+		-webkit-transition: width 0.1s ease-out 0.1s, -webkit-transform 0.1s ease-in;
+		transition: width 0.1s ease-out 0.1s, -webkit-transform 0.1s ease-in;
+		-o-transition: transform 0.1s ease-in, width 0.1s ease-out 0.1s;
+		transition: transform 0.1s ease-in, width 0.1s ease-out 0.1s;
+		transition: transform 0.1s ease-in, width 0.1s ease-out 0.1s, -webkit-transform 0.1s ease-in
+	}
+	
+	#tancarSessioModal a.boto:hover:after,
+	#tancarSessioModal button.boto:hover:after {
+		-webkit-transform: translate(-10px, -10px);
+		-ms-transform: translate(-10px, -10px);
+		transform: translate(-10px, -10px);
+		width: calc(100%)
+	}
+	
+	#tancarSessioModal a.boto:active:after,
+	#tancarSessioModal button.boto:active:after {
+		width: 100%
+	}
+	
+	#tancarSessioModal a.boto2,
+	#tancarSessioModal button.boto2 {
+		display: -webkit-inline-box;
+		display: -ms-inline-flexbox;
+		display: inline-flex;
+		background-color: #ff8e4d;
+		padding: .5em 1em;
+		border-radius: .25em;
+		border: none;
+		color: #f7ede9;
+		font-family: "Balsamiq Sans", sans-serif;
+		font-size: 1.35em;
+		text-decoration: none;
+		border: 2px solid #000;
+		-webkit-transition: .4s;
+		-o-transition: .4s;
+		transition: .4s
+	}
+	
+	#tancarSessioModal a.boto2:hover,
+	#tancarSessioModal button.boto2:hover {
+		border: 2px solid #f7ede9;
+		background-color: #2e2b2d;
+		text-decoration: line-through
+	}
+
+</style>

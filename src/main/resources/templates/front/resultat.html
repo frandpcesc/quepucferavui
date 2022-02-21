@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+	<head>
+	  	<!--/* Required meta tags ------------------------------------------------- */-->
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <meta name="description" content="Projecte final 2021 per DAW">
+	    <meta name="keywords" content="projecte, DAW">
+	    <meta name="author" content="Grup 5">
+	    <!--/* CSS ---------------------------------------------------------------- */-->
+	    <link rel="stylesheet" href="/css/front/bootstrap.min.css">
+	    <link rel="stylesheet" href="/css/front/style.css">
+	    <link rel="stylesheet" href="/css/front/style2.css">
+		<!--/* <link rel="stylesheet" href="/css/front/magrada.css"> */-->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+	    <link rel="preconnect" href="https://fonts.googleapis.com">
+	    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+	    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital,wght@0,400;0,700;1,700&amp;family=Montserrat:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+	    <link rel="stylesheet" href="https://d33wubrfki0l68.cloudfront.net/css/68818763319cf667ed141dc03e654e8db3424772/assets/css/animate.min.css">
+	    <link rel="stylesheet" href="/css/front/fontawesome.min.css">
+	    <link rel="stylesheet" href="/css/front/brands.min.css">
+	    <link rel="stylesheet" href="/css/front/solid.min.css">
+	    <link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico">
+	    <title>Quepucferavui.cat</title>
+	</head>
+	
+    <body class="snippet-body" oncontextmenu="return false">
+		
+		<!--/* CAPÇALERA ---------------------------------------------------------- */-->
+		<div th:replace="front/static/headerResultat"></div>
+				
+		<div class="wf-container">
+		
+			<!--/* RESPOSTES DELS USUARIS ------------------------------------------------------ */-->		
+			<form method="post" id="form-respostes-dema" th:action="@{/activitats-dema}">
+				<div th:each="respostes : ${llistaRespostes}" hidden>
+					<input type="text" th:name="${respostes.key}" th:value="${respostes.value}">
+				</div>
+			</form>
+			<form method="post" id="form-respostes-setmana" th:action="@{/activitats-setmana}">
+				<div th:each="respostes : ${llistaRespostes}" hidden>
+					<input type="text" th:name="${respostes.key}" th:value="${respostes.value}">
+				</div>
+			</form>
+			
+			<!--/* Opcions Escollides------------------------------------------------------ */-->
+			<div class="caixaOpcionsEscollides">
+				<p> 
+					<span class="opcionsEscollides" th:text="${estatAnim}"></span>
+					<span class="opcionsEscollides" th:text="${company}"></span>
+					<span class="opcionsEscollides" th:text="${franja}"></span>
+					<span class="opcionsEscollides" th:if="${nomMunicipi != null}" th:text="${nomMunicipi}"></span>
+					<span class="opcionsEscollides" th:if="${codiPostal != null}" th:text="${codiPostal}"></span>
+					<span class="opcionsEscollides" th:if="${nomDistancia != null}" th:text="${nomDistancia}"></span>
+				</p>
+			</div>			
+			
+			<!--/* RESULTATS ------------------------------------------------------ */-->
+			<div th:each="activitat: ${llistaActivitats}">
+				<div class="wf-box">
+					<img th:if="${activitat.imatge.length > 0}"
+						 th:src="'data:image/jpg;base64,' + ${imatge.getImgData(activitat.imatge)}" th:alt="${activitat.name}">
+					<img th:if="${activitat.imatge.length == 0}" th:src="@{/assets/img/img_default.jpg}" th:alt="${activitat.name}">
+					<div class="content position-relative">
+						<input name="infoAct" id="infoAct" th:value="${activitat}" hidden>
+						<div class="topo position-absolute">
+							<p>
+								<a id="botoCompartir" class="enviarAmic botoCompartir" th:attr="data-act-nom=${activitat.name}, data-act-id=${activitat.id}" title="Compartir l'activitat" href="#" data-toggle="modal" data-target="#amicModal">
+									<i class="fas fa-paper-plane fa-2x shadow-sm"></i>
+								</a
+							></p>
+						</div>
+						<div class="mostrarFavorit" sec:authorize="isAuthenticated()">
+							<div th:if="${activitatsPreferides.size()} > 0">
+								<div th:if="${!activitatsPreferides.contains(activitat)}" class="topo2 position-absolute">
+										<p><a th:attr="data-act-id=${activitat.id}" data-like="0" class="enviarAmic botoFavorit" title="Afegir l'activitat a la llista de preferides" href="javascript:void(0)"><i class="fas fa-heart shadow-sm"></i></a></p>
+								</div>
+								<div th:if="${activitatsPreferides.contains(activitat)}" class="topo2 position-absolute">
+											<p><a th:attr="data-act-id=${activitat.id}" data-like="1" class="enviarAmic botoFavorit like" title="Llevar l'activitat de la llista de preferides" href="javascript:void(0)"><i class="fas fa-heart shadow-sm"></i></a></p>
+								</div>
+							</div>
+							<div th:if="${activitatsPreferides.isEmpty()}">
+								<div class="topo2 position-absolute">
+									<p><a th:attr="data-act-id=${activitat.id}" data-like="0" class="enviarAmic botoFavorit" title="Afegir l'activitat a la llista de preferides" href="javascript:void(0)"><i class="fas fa-heart shadow-sm"></i></a></p>
+								</div>
+							</div>
+						</div>
+						<h3><a th:text="${activitat.name}" th:href="${activitat.url}" target="_blank" rel="noopener noreferrer"></a></h3>
+						<span th:text="${activitat.dades.name}"></span><span th:text="${activitat.etiqueta}" style="padding: 1em 0;"></span><span th:text="${activitat.descripcio}"></span>
+					</div>
+				</div>
+			</div>
+		
+		</div>
+		
+  		<!--/* COMPARTIR ACTIVITAT -------------------------------------------- */-->
+		<div th:replace="front/form/compartir"></div>
+			
+		<!--/* LOGIN ---------------------------------------------------------- */-->
+		<div th:replace="front/form/login"></div>
+		
+		<!--/* RECORDAR CONTRASENYA ------------------------------------------- */-->
+		<div th:replace="front/form/recordar"></div>				
+		
+		<!--/* REGISTRE ------------------------------------------------------- */-->
+		<div th:replace="front/form/registre"></div>		
+		
+		<!--/* PANELL USUARI ESTANDAR ----------------------------------------- */-->
+		<div sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_PROMOTOR','ROLE_USER')" th:replace="front/static/panellUsuari"></div>
+		
+		<!--/* DADES USUARI (modificar les meves dades) ----------------------- */-->
+		<div sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_PROMOTOR','ROLE_USER')" th:replace="back/usuari/form/dadesUsuari"></div>
+		
+		<!--/* BAIXA ---------------------------------------------------------- */-->
+		<div sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_PROMOTOR','ROLE_USER')" th:replace="front/static/baixa"></div>		
+			
+		<!--/* CONTACTAR ------------------------------------------------------ */-->
+		<div th:replace="front/form/contactar"></div>
+		    
+		<!--/* COOKIES -------------------------------------------------------- */-->    	
+		<div th:replace="front/static/cookies"></div>		
+		
+		<!--/* PEU ------------------------------------------------------------ */-->
+		<div>
+			<th:block th:if="${not #lists.isEmpty(llistaActivitats)}">
+				<div th:replace="front/static/footer"></div>
+			</th:block>
+		</div>
+		<div>
+			<th:block th:if="${#lists.isEmpty(llistaActivitats)}">
+				<div th:replace="front/static/footerBottom"></div>
+			</th:block>
+		</div>	
+	
+	</body>      
+      
+	<!--/* ------------------------------------------------------------------------ */-->
+	<!--/* (Optional) JAVASCRIPT -------------------------------------------------- */-->
+	<!--/* jQuery first, then Popper.js, then Bootstrap JS ------------------------ */-->
+	<!--/* ------------------------------------------------------------------------ */-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+	<script src="https://kit.fontawesome.com/628c8d2499.js" crossorigin="anonymous"></script>
+	<script src="/js/front/bootstrap.min.js"></script>
+	<script defer="" src="/js/front/fontawesome_all.min.js"></script>
+	<script defer="" src="/js/front/cookie.min.js"></script>
+	<script src="/js/front/script.js"></script>
+	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script src="/js/front/responsive_waterfall.js"></script>
+	<script src="/js/front/app.js"></script>
+	<script sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_PROMOTOR','ROLE_USER')" src="/js/back/script.js"></script>	
+
+</html>

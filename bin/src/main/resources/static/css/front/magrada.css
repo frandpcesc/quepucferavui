@@ -1,0 +1,7 @@
+ div.topo2 p a.like{
+	color: #ff8e4d !important;
+}
+
+ div.topo2 p a.like:hover {
+	 color: white !important;
+ }

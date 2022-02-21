@@ -1,0 +1,27 @@
+<header class="container-fluid x-sm-3 px-md-5 px-lg-5">
+	<div class="capsalera">
+	    <div class=" logo "> 
+	    	<a href="/">que</a>
+	    	<a href="/">puc</a>
+	    	<a href="/">fer</a>
+	    	<a href="/">avui</a>
+	    	<a href="/">.cat</a>
+	    </div>
+	    <div class="mnu ">
+	        <small>
+	            <span sec:authentication="name"></span>
+	            <span class="font-weight-normal text-white"> amb rol: </span>
+	            <span class="d-block d-md-inline pr-3">Administrador</span>
+	            <a class="d-block d-lg-inline pr-3" href="#">Canvia la contrasenya</a>
+	            <a class="d-block d-lg-inline" href="#" data-toggle="modal" data-target="#tancarSessioModal">Tanca la sessió</a>
+	        </small>
+	    </div>
+	</div>
+</header>
+
+<style type="text/css">
+	div small span:nth-child(3) {
+	    color: #ff8e4d;
+	    font-weight: bold;
+	}
+</style>

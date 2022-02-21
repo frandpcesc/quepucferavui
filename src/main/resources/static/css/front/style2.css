@@ -1,0 +1,252 @@
+/* Ampliació de l'style.css */
+
+/* Avís cookies ------------------------------------------------------------------------------------ */
+#cookiesAvis .button.close {
+	color: #2e2b2d;
+	font-size: 1.5em;
+	opacity: 1;
+}
+
+
+/* Formulari de baixa (modal) ---------------------------------------------------------------------- */
+#baixaModal h2,
+#baixaModal h3 {
+	font-family: "Balsamiq Sans", sans-serif;
+	font-size: 2.48em;
+	font-weight: 600;
+	margin-bottom: 0;
+	color: #2e2b2d;
+}
+
+#baixaModal p {
+	font-family: "Montserrat", sans-serif;
+	color: #2e2b2d;
+	font-size: .9em;
+}
+
+#baixaModal p svg {
+	font-size: 5.5em;
+}
+
+#baixaModal p a {
+	color: #2e2b2d!important;
+}
+
+#baixaModal .button.close {
+	color: #2e2b2d;
+	font-size: 1.5em;
+	opacity: 1;
+}
+
+
+/* Formulari de contacte (modal) ------------------------------------------------------------------ */
+#contacteModal .button.close {
+	color: #2e2b2d;
+	font-size: 1.5em;
+	opacity: 1;
+}
+
+
+/* Formulari de login (modal) --------------------------------------------------------------------- */
+#usuariModal .button.close {
+	color: #2e2b2d;
+	font-size: 1.5em;
+	opacity: 1;
+}
+
+#usuariModal form span.input-group-text svg {
+	margin-left: 0;
+}
+
+
+/* Formulari de registre (modal) ------------------------------------------------------------------ */
+#registreModal h2, #registreModal h3 {
+	font-family: "Balsamiq Sans", sans-serif;
+	font-size: 2.48em;
+	font-weight: 600;
+	margin-bottom: 0;
+	color: #2e2b2d;
+}
+
+#registreModal .button.close {
+	color: #2e2b2d;
+	font-size: 1.5em;
+	opacity: 1;
+}
+
+#registreModal form .input-group {
+	margin:1em 0em;
+}	
+
+#registreModal form span.input-group-text {
+	opacity: .8;
+}
+
+#registreModal form span.input-group-text svg {
+	color: #2e2b2d;
+	font-size: 1.2em;
+	margin-left: 0;
+}	
+
+#registreModal form input {
+	border-left-color: #f7ede9;
+	/* background-color: fff; */
+	opacity: .8;
+	padding-left: 1em;
+}
+	
+#registreModal p {
+    padding-bottom: 3em;
+    font-family: "Montserrat", sans-serif;
+	color: #2e2b2d;
+	font-size: .8em;	
+}	
+
+#registreModal form label[for='terms'] {
+	font-family: "Montserrat", sans-serif;
+	color: #2e2b2d;
+	font-size: .8em;
+}
+
+#registreModal form a:hover {
+	color: #0a58ca;
+}
+
+
+/* Formulari recordar contrasenya ----------------------------------------------------------------- */
+div#recordarGroup, form#recordar {
+	display: block;
+}
+
+#recordarModal h3 {
+	font-family: "Balsamiq Sans", sans-serif;
+	font-size: 2.4em;
+	font-weight: 600;
+	margin-bottom: 0;
+	color: #2e2b2d;
+}
+
+#recordarModal div#recordarGroup svg {
+	font-size: 5.5em;
+	color: #2e2b2d;
+}
+
+#recordarModal p {
+	font-family: "Montserrat", sans-serif;
+	color: #2e2b2d;
+	font-size: .8em;
+}
+
+#recordarModal .button.close {
+	color: #2e2b2d;
+	font-size: 1.5em;
+	opacity: 1;
+}
+
+#recordarModal form input {
+	border-left-color: #f7ede9;
+	background-color: fff;
+	opacity: .8;
+	padding-left: 1em;
+}
+
+#recordarModal span.input-group-text {
+	background-color: fff;
+	opacity: .8;
+}
+
+#recordarModal span.input-group-text svg {
+	color: #2e2b2d!important;
+	font-size: 1.2em !important;
+}
+
+#recordarModal  form .input-group {
+	margin: 1em 0em;
+}
+
+
+/* M'agrada ---------------------------------------------------------------------------------------- */
+div.topo2 p a.like{
+	color: #ff8e4d !important;
+}
+
+div.topo2 p a.like:hover {
+	color: white !important;
+}
+
+.caixaOpcionsEscollides{
+	margin-top: 20px;
+	display:flex;
+	justify-content: center;	
+}
+
+div.caixaOpcionsEscollides p {
+	color: white;
+}
+
+div span.opcionsEscollides {
+	background: #ff8e4d;
+	border-radius: 10px;
+	padding: 5px 10px;
+	margin-right: 12px;
+	white-space: nowrap;
+	line-height: 3;
+}
+
+
+/* Modal cookies ---------------------------------------------------------------------------------- */
+#cookiesModal .button.close {
+	color: #2e2b2d;
+	font-size: 1.5em;
+	opacity: 1;
+}
+
+
+/* Modal enviar a un amic (activitat) -------------------------------------------------------------- */
+#amicModal button.close {
+	color: #2e2b2d;
+	font-size: 1.5em;
+	opacity: 1;
+}
+
+#amicModal form span.input-group-text svg {
+	margin-left: 0;
+}
+
+
+/* Panell d'usuari -------------------------------------------------------------------------------- */
+#panellUsuariModal .button.close {
+    color: #2e2b2d;
+    font-size: 1.5em;
+    opacity: 1;
+}
+
+#panellUsuariModal h2, #panellUsuariModal h3 {
+    font-family: "Balsamiq Sans", sans-serif;
+    font-size: 2.48em;
+    font-weight: 600;
+    margin-bottom: 0;
+    color: #2e2b2d;
+}
+
+#panellUsuariModal p {
+    font-family: "Montserrat", sans-serif;
+    color: #2e2b2d;
+    font-size: .8em;
+}
+
+#panellUsuariModal p span {
+    font-size: 1.5em;
+}
+
+#panellUsuariModal p a  {
+    color: #2e2b2d !important;
+}
+
+
+/* Peu -------------------------------------------------------------------------------------------- */
+footer small a {
+	font-family: "Montserrat", sans-serif;
+	font-size: 14px;
+	line-height: 21px;
+}

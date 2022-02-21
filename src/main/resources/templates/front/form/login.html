@@ -1,0 +1,64 @@
+<div class="modal fade auto-off" id="usuariModal" tabindex="-1" role="dialog" aria-labelledby="demoModal" aria-hidden="true">
+	<div class="modal-dialog animated zoomInDown modal-dialog-centered" role="document">
+		<div class="modal-content py-3">
+			<div class="container-fluid d-flex flex-column">
+				<div class="button close justify-content-end text-end" type="button" data-dismiss="modal" aria-label="Close">
+					<i class="fas fa-times-circle fa-lg"></i>
+				</div>
+				<div class="row pt-2 px-5 pb-5" id="noLogat">
+					<div class="col-md-12 text-center">
+						<h3>
+							Benvingut! 
+							<i class="far fa-smile-beam"></i>
+						</h3>
+						<form class="registreUsuari" th:action="@{/login}" id="login" method="post">
+							<div th:if="${param.error}">
+								<div class="alert alert-danger">Correu electrònic o contrasenya incorrectes</div>
+							</div>							
+							<div class="input-group flex-nowrap">
+								<span class="input-group-text"> 
+									<i class="fas fa-user"></i>
+								</span>
+								<label class="d-none" for="username">Correu electrònic</label>
+								<input class="form-control" type="text" id="username" name="username" placeholder="Correu electrònic" title="Correu electrònic" aria-label="Correu electrònic" aria-describedby="addon-wrapping">
+							</div>
+							<div class="input-group flex-nowrap pb-3">
+								<span class="input-group-text"> 
+									<i class="fas fa-key"></i>
+								</span>
+								<label class="d-none" for="password">Contrasenya</label>
+								<input class="form-control" type="password" id="password" name="password" placeholder="Contrasenya" title="Contrasenya" aria-label="contrasenya" aria-describedby="addon-wrapping">
+							</div>
+							<button class="boto" type="submit" name="login-submit">
+								<span>Inicia sessió</span>
+							</button>
+						</form>
+						<p class="d-flex pt-5 pb-1 mb-0">
+							<a class="recordar">Has oblidat la teva contrasenya?</a>
+						</p>
+						<p class="ps mb-0 pb-0 text-start">
+							** Deu meu! Encara no tinc compte, 
+							<a class="fw-bold">Registrar-me ja!</a>
+						</p>
+					</div>
+				</div>
+				<div class="row pt-2 px-5 pb-5" id="logat">
+					<h3>Tu est un dels nostres!</h3>
+					<p><i class="far fa-smile-wink"></i></p>
+					<p class="d-flex pt-4 pb-3 mb-0"> 
+						<span>Ara pots guardar-te les teves cerques per un altre dia, no tot ha de ser avui...</span>
+					</p>
+					<p> 
+						<a class="boto" type="button" data-dismiss="modal" aria-label="Close" href="#">
+							<span>Seguim!</span>
+						</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!--/* iframe ajax */-->
+<iframe id="ifrmLogin" class="ifrmLogin d-none"></iframe>

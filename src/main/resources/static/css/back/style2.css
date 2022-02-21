@@ -1,0 +1,101 @@
+/* Ampliació de l'style.css */
+
+/* Botons pàgina principal administrador ---------------------------------------------------------- */
+.solution_card .solu_description a.btn {
+	border: 0;
+	border-radius: 15px;
+	background: linear-gradient( 140deg, #fa8a01 0%, #fa8a01 50%, #fa8a01 75%) !important;
+	color: #d7d1d5;
+	font-weight: 500;
+	font-size: 1rem;
+	padding: 5px 16px;
+}
+
+.solution_cards_box .solution_card:hover .solu_description a.btn {
+	background: #d7d1d5 !important;
+	color: #ff8e4d;
+}
+
+
+/* Header (administrador, promotor) --------------------------------------------------------------- */
+header.container-fluid {
+	font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji" !important;
+	font-size: 16px !important;
+	font-weight: 400 !important;
+}
+
+header.container-fluid .font-weight-normal {
+	font-weight: 400 !important;
+}
+
+header.container-fluid div small {
+	font-size: 80% !important;
+	font-weight: 400 !important;
+}
+
+header.container-fluid div small span:nth-child(3) {
+    color: #ff8e4d !important;
+    font-weight: bold !important;
+    padding-right: 1rem !important;
+}
+	
+header.container-fluid div small a {
+	text-decoration: none !important;
+}
+
+header.container-fluid div small a:nth-child(4) {
+    padding-right: 1rem !important;
+}
+
+
+/* Formularis alta i modificació (administrador, promotor) ---------------------------------------- */
+form.container {
+	font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji" !important;
+}	
+
+form.container input[type="text"]:read-only,
+form.container input[type="date"]:read-only, 
+form.container textarea:read-only,
+form.container select.readonly, form.container select.readonly option, 
+form.container label[readonly]:before {
+	color: rgb(162, 164, 167) !important;
+	background-color: white !important;
+	border: 1px solid rgb(206, 212, 218) !important;
+}	
+
+form.container obligatori {
+	border-color: #fa3131; 
+	border-width: 2px; 
+}
+
+form.container .text-right {
+	text-align: right; 
+}
+
+form.container div.dies label {
+	margin-right: 1.5rem;
+}
+
+
+/* Llista (administrador) ------------------------------------------------------------------------- */
+div.container a.boto2:hover {
+	color:white !important;
+}
+
+
+/* Llista activitats (promotor) -------------------------------------------------------------------- */
+div.container-cards { 
+	flex-wrap: wrap !important;
+}
+
+div.container-cards div.big { 
+	width:50% !important;
+}
+
+div.container-cards div.big div.img-box { 
+	height: calc(200px + 8vw) !important;
+}
+
+div.container-cards span.recipe-tag, div.container-cards p.recipe-desc {
+	color: #b9b9b9 !important;
+} 

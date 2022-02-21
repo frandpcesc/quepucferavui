@@ -1,0 +1,49 @@
+<!--/* modal per compartir una activitat */-->
+<div class="modal fade auto-off" id="amicModal" tabindex="-1" role="dialog" aria-labelledby="demoModal" aria-hidden="true">
+	<div class="modal-dialog animated zoomInDown modal-dialog-centered" role="document">
+		<div class="modal-content py-3">
+			<div class="container-fluid d-flex flex-column">
+				<button class="close justify-content-end text-end" type="button" data-dismiss="modal" aria-label="Close">
+					<i class="fas fa-times-circle fa-lg"></i>
+				</button>
+				<div class="row pt-2 px-5 pb-5">
+					<div class="col-md-12 text-center">
+						<h2>Qui serà l'afortunat?</h2>
+						<p class="text-muted text-start">Envia a una amiga o amic el que has descobert per fer plegats</p>
+						<form id="compartirActivitat">
+							<div class="input-group flex-nowrap">
+								<span class="input-group-text"> 
+									<i class="fas fa-user"></i>
+								</span>
+								<label class="d-none" for="nomCompartir">Nom</label>
+								<input class="form-control" type="text" id="nomCompartir" placeholder="El teu nom" title="Nom" aria-label="Nom" aria-describedby="addon-wrapping">
+							</div>
+							<div class="input-group flex-nowrap">
+								<span class="input-group-text">
+									<i class="fas fa-envelope"></i>
+								</span>
+								<label class="d-none" for="emailCompartir">Correu electrònic</label>
+								<input class="form-control" type="text" id="emailCompartir" placeholder="Correu electrònic destinatari" title="Correu electrònic" aria-label="Correu electrònic" aria-describedby="addon-wrapping">
+							</div>
+							<input class="form-control" type="text" id="activitatCompartir" aria-label="Username" aria-describedby="addon-wrapping" hidden>
+
+							<!--/* <span class="aquiEnvia">Estàs a punt d'enviar informació sobre:<br><span>-//- CookingEvent: Vine a tastar sa cuina Balear -//- </span></span><a class="boto" id="b-enviar" href="#"><span>Enviar</span></a><span id="fet"><i class="fas fa-check-circle"> </i><b> fet!</b></span>*/-->
+							<span class="aquiEnvia">
+								Estàs a punt d'enviar informació sobre:<br>
+								<span id="textNom"></span>
+							</span>
+							<button class="boto" type="submit" id="b-enviar">
+								<span>Enviar</span>
+							</button>
+							<span id="fet">
+								<i class="fas fa-check-circle"> </i>
+								<strong> fet!</strong>
+							</span>
+						</form>
+						<p class="text-muted peuAmic text-start">*pots enviar a mes d'un amic o amiga separant els mails per comes.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

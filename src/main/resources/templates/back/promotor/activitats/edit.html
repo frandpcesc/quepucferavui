@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+	<head>
+	  	<!--/* Required meta tags ------------------------------------------------- */-->
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <meta name="description" content="Projecte final 2021 per DAW">
+	    <meta name="keywords" content="projecte, DAW">
+	    <meta name="author" content="Grup 5">
+	    <!--/* CSS ---------------------------------------------------------------- */-->
+	    <link rel="stylesheet" href="/css/back/bootstrap.min.css">
+	    <link rel="stylesheet" href="/css/back/style.css">
+	    <link rel="stylesheet" href="/css/back/style2.css">
+	    <link rel="stylesheet" href="/css/back/forms.css">
+	    <link rel="preconnect" href="https://fonts.googleapis.com">
+	    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+	    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital,wght@0,400;0,700;1,700&amp;family=Montserrat:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+	    <link rel="stylesheet" href="https://d33wubrfki0l68.cloudfront.net/css/68818763319cf667ed141dc03e654e8db3424772/assets/css/animate.min.css">
+	    <link rel="stylesheet" href="/css/back/fontawesome.min.css">
+	    <link rel="stylesheet" href="/css/back/brands.min.css">
+	    <link rel="stylesheet" href="/css/back/solid.min.css">
+    	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css">
+    	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> -->	    
+	    <link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico">
+	    <title>Quepucferavui.cat > Editar activitat</title>
+	</head>
+	
+	<body class="snippet-body" oncontextmenu="return false">
+	
+		<!--/* CAPÇALERA ---------------------------------------------------------- */-->
+		<div th:replace="back/promotor/static/header"></div>	
+		
+		<!--/* DADES USUARI (modificar les meves dades) --------------------------- */-->
+		<div th:replace="back/usuari/form/dadesUsuari"></div>
+		
+		<form class="container" th:action="@{/back/promotor/activitats/update/{id}(id=${activitat.id})}" th:object="${activitat}" method="post" enctype="multipart/form-data">
+			
+			<!--/* títol */-->
+        	<h2>Editar activitat</h2>
+        	<div class="tornar">
+				<a href="/back/promotor/activitats">Tornar a l'index</a>
+        	</div>	        	
+		
+			<div th:if="!${#strings.isEmpty(ok)}" th:text="${ok}" class="alert alert-success mt-3" role="alert"></div>
+			<div th:if="!${#strings.isEmpty(errors)}" th:text="${errors}" class="alert alert-danger mt-3" role="alert"></div>
+			<div th:if="${isPromotorLoggedUser AND (!activitat.dades.visible OR !activitat.visiblea)}" class="alert alert-warning mt-3" role="alert">
+				<span class="d-block" th:if="${isPromotorLoggedUser AND !activitat.dades.visible}">Un administrador ha ocultat la llista que inclou aquesta activitat.</span>
+				<span class="d-block" th:if="${isPromotorLoggedUser AND !activitat.visiblea}">Un administrador ha ocultat aquesta activitat.</span>
+				<span class="d-block">Per favor contacti amb l'administrador.</span>
+			</div>	
+			
+			<div class="row mt-3" th:classappend="${isPromotorLoggedUser}?d-none">
+				<div class="form-check pt-3 pb-2 pleft-0">
+            		<input class="form-check-input" type="checkbox" id="visiblea" name="visiblea" placeholder="visible" th:checked="*{visiblea}">
+            		<label class="form-check-label" for="visiblea">
+            			Visible segons l'administrador <small>(perquè el promotor la pugui mostrar)</small>
+            		</label>
+        		</div>        		
+        	</div>			
+			<div class="row mt-1">
+				<div class="form-check pt-1 pb-2 pleft-0">
+            		<input class="form-check-input" type="checkbox" id="visiblep" name="visiblep" placeholder="visible" th:checked="*{visiblep}">
+            		<label class="form-check-label" for="visiblep">
+            			Visible segons el promotor <small>(mostra l'activitat)</small>
+            		</label>
+        		</div>        		
+        	</div>  
+        	<div class="row mt-3 d-none">
+				<div class="col">
+					<label for="imatge" class="form-label">Imatge</label>
+		    		<textarea class="form-control" th:field="*{imatge}" id="imatge" name="imatge" rows="3"></textarea>
+		    		<img th:src="${activitat.imatge}?${'data:image/jpg;base64,'+imatge.getImgData(activitat.imatge)}:${'/assets/img/img_default.jpg'}"/>
+	    		</div>  		
+			</div>  
+			<div class="row mt-3" th:classappend="${isPromotorLoggedUser}?d-none">
+        		<div class="col">
+					<label for="destacat" class="form-label">Activitat destacada*</label>
+		    		<select class="form-select" th:field="*{destacat}" id="destacat" name="destacat" aria-label="destacat">
+		    			<option value="">Seleccionar</option>
+		    			<option value="0">0 (sense destacar)</option>
+    					<option th:each="i : ${#numbers.sequence(1, 5)}" th:value="${i}" th:text="${i}"></option>
+					</select>
+		    		<obligatori></obligatori>
+	    		</div>
+	    	</div>
+	    	<div class="row mt-3">
+				<div class="col">
+					<label for="fileField" class="form-label">Canviar Imatge</label>
+		    		<input type="file" class="form-control" id="inpEditActImatge" name="fileField">
+	    		</div>  		
+			</div>				     	
+        	<div class="row mt-3">
+				<div class="col">
+					<label for="name" class="form-label">Títol*</label>
+		    		<input type="text" class="input-tags" th:field="*{name}" id="name" name="name" placeholder="títol de l'activitat">
+		    		<obligatori></obligatori>
+	    		</div>  		
+			</div>
+			<div class="row mt-3">
+				<div class="col">
+					<label for="dades" class="form-label">Llista d'activitats*</label>
+		    		<select class="form-select" id="dades" name="dades" aria-label="llista d'activitats">
+		    			<option value="0">Seleccionar</option>
+						<option	th:each="dades  : ${llistaDades}"
+								th:value="${dades.id}" 
+								th:text="|${dades.name} ${dades.visible?'(visible)':'(oculta)'}|"
+								th:selected="(${dades.id} == *{dades.id})">		
+						</option>
+					</select>
+		    		<obligatori></obligatori>
+		    	</div>
+			</div>			
+			<div class="row mt-3">
+				<div class="col">
+					<label for="url" class="form-label">Link*</label>
+		    		<input type="text" class="input-tags" th:field="*{url}" id="url" name="url" placeholder="url on ha de redirigir">
+					<obligatori></obligatori>
+	    		</div>  		
+			</div>				
+        	<div class="row mt-3">
+				<div class="col">
+					<label for="etiqueta" class="form-label">Tags</label>
+		    		<input type="text" class="input-tags" th:field="*{etiqueta}" id="etiqueta" name="etiqueta">
+	    		</div>  		
+			</div>	
+			<div class="row mt-3">
+				<div class="col">
+					<label for="descripcio" class="form-label">Descripció*</label>
+		    		<textarea class="form-control" th:field="*{descripcio}" id="descripcio" name="descripcio" rows="3"></textarea>
+					<obligatori></obligatori>
+	    		</div>  		
+			</div>
+			<div class="row mt-3">
+				<div class="col-6">
+					<label for="dataInici" class="form-label">Data d'inici*</label>
+		    		<input type="date" class="input-tags" th:value="${activitat.dataInici}?${#dates.format(activitat.dataInici, 'yyyy-MM-dd')}:''" id="dataInici" name="dataInici">
+					<obligatori></obligatori>
+	    		</div>  		
+				<div class="col-6">
+					<label for="dataFi" class="form-label">Data fi*</label>
+		    		<input type="date" class="input-tags" th:value="${activitat.dataFi}?${#dates.format(activitat.dataFi, 'yyyy-MM-dd')}:''" id="dataFi" name="dataFi">
+					<obligatori></obligatori>
+	    		</div>  						
+			</div>	
+			<div class="row mt-3">
+				<div class="col dies">
+					<label class="form-label d-block">Dies de la setmana*</label>
+		   			<input class="form-check-input" type="checkbox" name="dl" id="dl" value="dl" th:checked="${activitat.dies}?${#strings.contains(activitat.dies,'dl')}">
+					<label class="form-check-label d-inline" for="dl" title="dilluns">dl.</label>
+		   			<input class="form-check-input" type="checkbox" name="dt" id="dt" value="dt" th:checked="${activitat.dies}?${#strings.contains(activitat.dies,'dt')}">
+					<label class="form-check-label d-inline" for="dt" title="dimarts">dt.</label>
+		   			<input class="form-check-input" type="checkbox" name="dc" id="dc" value="dc" th:checked="${activitat.dies}?${#strings.contains(activitat.dies,'dc')}">
+					<label class="form-check-label d-inline" for="dc" title="dimecres">dc.</label>
+		   			<input class="form-check-input" type="checkbox" name="dj" id="dj" value="dj" th:checked="${activitat.dies}?${#strings.contains(activitat.dies,'dj')}">
+					<label class="form-check-label d-inline" for="dj" title="dijous">dj.</label>
+		   			<input class="form-check-input" type="checkbox" name="dv" id="dv" value="dv" th:checked="${activitat.dies}?${#strings.contains(activitat.dies,'dv')}">
+					<label class="form-check-label d-inline" for="dv" title="divendres">dv.</label>
+		   			<input class="form-check-input" type="checkbox" name="ds" id="ds" value="ds" th:checked="${activitat.dies}?${#strings.contains(activitat.dies,'ds')}">
+					<label class="form-check-label d-inline" for="ds" title="dissabte">ds.</label>
+		   			<input class="form-check-input" type="checkbox" name="dg" id="dg" value="dg" th:checked="${activitat.dies}?${#strings.contains(activitat.dies,'dg')}">
+					<label class="form-check-label d-inline" for="dg" title="diumenge">dg.</label>																														
+	    		</div>
+				<obligatori></obligatori>
+	    		<input type="hidden" th:field="*{dies}" id="dies" name="dies">  						
+			</div>				
+			<div class="row mt-3">
+				<div class="col-4">
+					<label for="codi" class="form-label">Codi postal*</label>
+		    		<select class="form-select" id="codi" name="codi" aria-label="codi postal">
+		    			<option value="0">Seleccionar</option>
+						<option	th:each="codi  : ${llistaCodis}"
+								th:value="${codi.id}" 
+								th:text="${codi.codiPostal}"
+								th:selected="(${codi.id} == *{codi.id})">	
+						</option>
+					</select>
+		    		<obligatori></obligatori>
+	    		</div>	     					
+				<div class="col-8">
+					<label for="municipi" class="form-label">Municipi*</label>
+		    		<select class="form-select" id="municipi" name="municipi" aria-label="municipi">
+		    			<option value="0">Seleccionar</option>
+						<option	th:each="municipi  : ${llistaMunicipis}"
+								th:value="${municipi.id}" 
+								th:text="${municipi.nom}"
+								th:selected="(${municipi.id} == *{municipi.id})">	
+						</option>								
+					</select>
+		    		<obligatori></obligatori>
+	    		</div>	     					
+			</div>		
+
+			<h4 class="mb-0 mt-4">Com et trobes avui?*</h4>
+			<span class="mt-0">(Pots seleccionar 2 estats d'anim com a màxim)</span>
+    		<div class="form-check pt-3" th:each="anim, iter : ${llistaAnims}">
+    			<input class="form-check-input pregunta1" type="checkbox" name="anims" th:id="${'anims'+anim.id}" th:value="${anim.id}" th:checked="${activitat.anims.contains(anim)}">
+				<label class="form-check-label" th:for="${'anims'+anim.id}" th:text="${anim.estat}"></label>
+				<!--/* mostra tag obligatori al darrer checkbox */-->
+				<obligatori th:if="${iter.count==iter.size}"></obligatori>
+			</div>
+			
+			<h4 class="mb-0 mt-4">Amb qui vols anar?*</h4>
+			<span class="mt-0">(Pots seleccionar 3 condicions com a màxim)</span>
+    		<div class="form-check pt-3" th:each="company, iter : ${llistaCompanys}">
+    			<input class="form-check-input pregunta2" type="checkbox" name="companys" th:id="${'companys'+company.id}" th:value="${company.id}" th:checked="${activitat.companys.contains(company)}">
+				<label class="form-check-label" th:for="${'companys'+company.id}" th:text="${company.companys}"></label>
+				<!--/* mostra tag obligatori al darrer checkbox */-->
+				<obligatori th:if="${iter.count==iter.size}"></obligatori>
+			</div>		
+			
+			<h4 class="mb-0 mt-4">Quan vols anar-hi?*</h4>
+			<span class="mt-0">(Pots seleccionar 2 franjes com a màxim)</span>			
+    		<div class="form-check pt-3" th:each="horari, iter : ${llistaHoraris}">
+    			<input class="form-check-input pregunta3" type="checkbox" name="horaris" th:id="${'horaris'+horari.id}" th:value="${horari.id}" th:checked="${activitat.horaris.contains(horari)}">
+				<label class="form-check-label" th:for="${'horaris'+horari.id}" th:text="${horari.franja}"></label>
+				<!--/* mostra tag obligatori al darrer checkbox */-->
+				<obligatori th:if="${iter.count==iter.size}"></obligatori>
+			</div>	
+						
+			<div class="d-flex justify-content-evenly pt-5">
+        		<button id="modificar" type="submit" class="boto2">
+            		<span>Modificar</span>
+        		</button>
+        		<a class="boto2" id="eliminar"><span>Eliminar</span></a>     
+        		<a id="eliminarOk" class="d-none" th:href="@{/back/promotor/activitats/delete/{id}(id=${activitat.id})}"></a> 		
+        	</div>	
+        	<div class="row text-danger text-center mt-3 w-100 d-none" id="confirmar">
+        		<input class="form-check-input" type="checkbox" id="checkConfirmar" name="checkConfirmar">
+				<label class="form-check-label d-inline" for="checkConfirmar">
+                	Confirmar l'eliminar
+        		</label>
+        	</div>
+	      	
+		</form>
+		
+	</body>
+	
+	<!--/* ------------------------------------------------------------------------ */-->
+	<!--/* (Optional) JAVASCRIPT -------------------------------------------------- */-->
+	<!--/* jQuery first, then Popper.js, then Bootstrap JS ------------------------ */-->
+	<!--/* ------------------------------------------------------------------------ */-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.js"></script>
+	<script src="/js/back/bootstrap.min.js"></script>
+	<script src="https://kit.fontawesome.com/628c8d2499.js" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script src="/js/back/script.js"></script>
+	<script src="/js/back/activitats.js"></script>
+
+</html>

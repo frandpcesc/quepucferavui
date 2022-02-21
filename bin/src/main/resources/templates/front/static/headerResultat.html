@@ -1,0 +1,77 @@
+<!--/* capçalera a la pàgina de resultats */-->
+<header class="container-fluid x-sm-3 px-md-5 px-lg-5">
+	
+	<div class="capsalera">
+	
+    	<div class="logo"> 
+    		<a href="/">que</a>
+    		<a href="/">puc</a>
+    		<a href="/">fer</a>
+    		<a href="/">avui</a>
+    		<a href="/">.cat</a>
+    	</div>
+    	
+	    <!--/* icona per usuari anònim */-->
+	    <div sec:authorize="isAnonymous()">
+	    	<a class="enviarAmic" id="iNoLogat" href="#" data-toggle="modal" data-target="#usuariModal">
+	    		<i class="fas fa-user"></i>
+	    	</a>  	
+	    </div>
+	    
+    	<!--/* icona per usuari loguejat */-->
+		<div sec:authorize="isAuthenticated()" class="d-flex">
+		
+		    <!--/* icona administrador */-->
+		    <div class="iconscontainer" sec:authorize="hasAnyRole('ROLE_ADMIN')">
+            	<div class="icon">
+            		<a class="enviarAmic" href="/back/admin">
+            			<i class="fas fa-users-cog"></i>
+            		</a>
+            		<span class="ico-admin">Administrador</span>
+            	</div>
+			</div>
+			
+          	<!--/* icona administrador o promotor */-->
+		    <div class="iconscontainer" sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_PROMOTOR')">          	
+            	<div class="icon">
+            		<a class="enviarAmic" href="/back/promotor">
+            			<i class="fas fa-user-tie"></i>
+            		</a>
+            		<span class="ico-proveidor">Promotor</span>
+            	</div>
+	        </div>
+	        
+          	<!--/* icona administrador o promotor o usuari */-->
+          	<div class="iconscontainer" sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_PROMOTOR','ROLE_USER')">   
+            	<div class="icon">
+            		<a class="enviarAmic" href="#" data-toggle="modal" data-target="#panellUsuariModal">
+            			<i class="fas fa-user"></i>
+            		</a>
+            		<span class="ico-usuari">Usuari</span>
+            	</div>
+	         </div>
+	         
+        </div>   
+        <!--/* FI icona per usuari loguejat */-->
+        	
+	</div>
+	<!--/* FI .capsalera */-->
+	
+	<div class="submenu container-fluid p-0">
+		<span> Tens <span th:text="${llistaActivitats.size()}"></span> opcions per escollir!</span>
+  		<nav>
+    		<ul>
+      			<li>
+      				<a href="#" onclick="document.getElementById('form-respostes-dema').submit();">I demà?</a>
+      			</li>
+      			<li>
+      				<a href="#" onclick="document.getElementById('form-respostes-setmana').submit();">i la resta de la setmana...</a>
+      			</li>
+      			<li>
+      				<a href="/">Tornem a buscar</a>
+      			</li>
+    		</ul>
+  		</nav>
+	</div>   
+	
+</header>
